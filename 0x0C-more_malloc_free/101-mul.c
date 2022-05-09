@@ -1,20 +1,20 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
- * main - Entry point
- *@argc: number of arguments
- *@argv: string with arguments
- * Return: Always 0 (Success)
+ * main - This prints multiplication of 2 numbers
+ * @argc: This is the argument count
+ * @argv: This is the argument vector
+ *
+ * Return: Always 0
  */
-
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
-	long int multi;
 	int i, j;
+	unsigned long num1, num2;
 
-	multi = 0;
 	if (argc != 3)
 	{
 		printf("Error\n");
@@ -25,14 +25,18 @@ int main(int argc, char *argv[])
 	{
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (!(isdigit(argv[i][j])))
+			if (argv[i][j] < 48 || argv[i][j] > 57)
 			{
 				printf("Error\n");
 				exit(98);
 			}
 		}
 	}
-	multi = atoi(argv[1]) * atoi(argv[2]);
-	printf("%ld\n", multi);
+
+	num1 = atol(argv[1]);
+	num2 = atol(argv[2]);
+
+	printf("%lu\n", num1 * num2);
+
 	return (0);
 }
